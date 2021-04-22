@@ -6,6 +6,7 @@
 
 <script>
 export default {
+	name: 'PanelContent',
 	data() {
 		return {
 			childrenComponentJson: {},
@@ -67,7 +68,7 @@ export default {
 	left: 0;
 	right: 0;
 	cursor: ns-resize;
-  background: #000;
+  background: #d7d7d7;
 }
 
 .panel-content .handle.handle-col {
@@ -76,7 +77,7 @@ export default {
 	left: -1px;
 	bottom: 0;
 	cursor: ew-resize;
-  background: #000;
+  background: #d7d7d7;
 }
 
 .panel-content .handle::after {

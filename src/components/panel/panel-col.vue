@@ -7,6 +7,7 @@
 
 <script>
 export default {
+	name: 'PanelCol',
 	data() {
 		return {
 			styleObj: {
@@ -40,7 +41,7 @@ export default {
 			let width = window.getComputedStyle(el).width
 			return parseFloat(width.substring(0, width.length - 2))
 		},
-		onMouseDown(e) {
+		onMouseDown() {
 			return e => {
         document.body.style.userSelect = 'none'
 				this.startX = e.x
@@ -51,10 +52,10 @@ export default {
 				document.addEventListener('mouseup', this.onMouseUp())
 			}
 		},
-		onMouseMove(e) {
+		onMouseMove() {
 			return this.mouseMoveHandle
 		},
-		onMouseUp(e) {
+		onMouseUp() {
 			return this.mouseUpHandle
 		},
 		mouseMoveHandle(e) {
@@ -81,7 +82,7 @@ export default {
 			this.styleObj.width = percentWidth
 			this.previousEl.style.width = percentpreviousElWidth
 		},
-		mouseUpHandle(e) {
+		mouseUpHandle() {
       document.body.style.userSelect = 'initial'
 			document.removeEventListener('mousemove', this.mouseMoveHandle)
 			document.removeEventListener('mouseup', this.mouseUpHandle)

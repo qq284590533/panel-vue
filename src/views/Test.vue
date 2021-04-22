@@ -29,19 +29,11 @@
 </template>
 
 <script>
-import panelContent from '@/components/panel-content'
-import panelRow from '@/components/panel-row'
-import panelCol from '@/components/panel-col'
 export default {
 	data() {
 		return {
 			showAside: false,
 		}
-	},
-	components: {
-		panelContent,
-		panelRow,
-		panelCol,
 	},
 }
 </script>

@@ -7,6 +7,7 @@
 
 <script>
 export default {
+	name: 'PanelRow',
 	data() {
 		return {
 			styleObj: {
@@ -16,7 +17,7 @@ export default {
 			el: null,
 			parentEl: null,
 			previousEl: null,
-			_height: null,
+			h: null,
 			parentELHeight: null,
 			previousElHeight: null,
 			startY: null,
@@ -55,11 +56,11 @@ export default {
 			let height = window.getComputedStyle(el).height
 			return parseFloat(height.substring(0, height.length - 2))
 		},
-		onMouseDown(e) {
+		onMouseDown() {
 			return (e) => {
         document.body.style.userSelect = 'none'
 				this.startY = e.y
-				this._height = this.getHeight(this.el)
+				this.h = this.getHeight(this.el)
 				this.parentELHeight = this.getHeight(this.parentEl)
 				this.previousElHeight = this.getHeight(this.previousEl)
 				document.addEventListener('mousemove', this.onMouseMove())
@@ -74,7 +75,7 @@ export default {
 		},
 		mouseMoveHandle(e) {
 			let distance = this.startY - e.y
-			let height = this._height + distance
+			let height = this.h + distance
 			let previousElHeight = this.previousElHeight - distance
 			if(height >= this.parentELHeight) {
 				height = this.parentELHeight
@@ -96,7 +97,7 @@ export default {
 			}
 			this.$emit('update:value', height)
 		},
-		mouseUpHandle(e) {
+		mouseUpHandle() {
       document.body.style.userSelect = 'initial'
 			document.removeEventListener('mousemove', this.mouseMoveHandle)
 			document.removeEventListener('mouseup', this.mouseUpHandle)
